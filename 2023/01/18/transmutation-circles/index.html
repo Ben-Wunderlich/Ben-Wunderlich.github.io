@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      transmutation-circles 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/11/28/spiral-automata/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2023/02/10/graphics-renderers/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">transmutation-circles</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2023-01-18
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Art/" title="Art">
+                    #Art
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Javascript/" title="Javascript">
+                    #Javascript
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>A friend of mine decided to run a game set in the world of fullmetal alchemist(one of my favorite anime), and as I was thinking about having a character in the world, I wondered what kind of transmutation circle they would have. Then I remembered, that is the sort of thing I do! So I looked at some reference, opened a p5js project and went wild with it.</p>
+<h2 id="basic-hero-circles"><a href="#basic-hero-circles" class="headerlink" title="basic hero circles"></a>basic hero circles</h2><p>I started a little more simple, trying to match the style from the show, something a protagonist could use, maybe a minor character that uses ice or light transmutation.</p>
+<img src="/2023/01/18/transmutation-circles/1674099971.png" class="" title="ice transmute">
+<img src="/2023/01/18/transmutation-circles/1674161684.png" class="" title="sun transmute">
+<p>next I wanted an evil one, something to have ominous music played when it appears onscreen, so of course that means lots of eyes, spirals and some perlin noise symbols for chaos.</p>
+<img src="/2023/01/18/transmutation-circles/1674109939.png" class="" title="evil transmutation">
+
+
+<h2 id="pushing-away"><a href="#pushing-away" class="headerlink" title="pushing away"></a>pushing away</h2><p>After the first few I wanted ones that diverge from the show more, so I looked through my previous images to find some inspiration starting with the sierpinski triangle(a limited version).</p>
+<img src="/2023/01/18/transmutation-circles/1674600411.png" class="" title="sierpinski transmute">
+
+<h2 id="greek-transmutation"><a href="#greek-transmutation" class="headerlink" title="greek transmutation"></a>greek transmutation</h2><p>Another thing I had seen recently was some ancient greek vases, so I made one inspired by them.  </p>
+<img src="/2023/01/18/transmutation-circles/1674684720.png" class="" title="greek">
+
+<h2 id="and-a-few-more-I-like"><a href="#and-a-few-more-I-like" class="headerlink" title="and a few more I like"></a>and a few more I like</h2><img src="/2023/01/18/transmutation-circles/1674981647.png" class="" title="stacked shapes">
+
+<img src="/2023/01/18/transmutation-circles/1675051946.png" class="" title="crystalline">
+
+<img src="/2023/01/18/transmutation-circles/1675039939.png" class="" title="triangle rays">
+
+<img src="/2023/01/18/transmutation-circles/1675146958.png" class="" title="zelda">
+
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/11/28/spiral-automata/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2023-01-18
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Art/" title="Art">
+                        #Art
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Javascript/" title="Javascript">
+                        #Javascript
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2023/02/10/graphics-renderers/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#basic-hero-circles"><span class="toc-text">basic hero circles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pushing-away"><span class="toc-text">pushing away</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#greek-transmutation"><span class="toc-text">greek transmutation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#and-a-few-more-I-like"><span class="toc-text">and a few more I like</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + transmutation-circles + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2023%2F01%2F18%2Ftransmutation-circles%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2023/01/18/transmutation-circles/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

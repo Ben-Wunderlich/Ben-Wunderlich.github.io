@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      mspaint-program 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2017/04/27/starting-game/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2019/02/14/fractals/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">mspaint-program</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2018-12-09
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Python/" title="Python">
+                    #Python
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Art/" title="Art">
+                    #Art
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>I had just started learning how to code and wanted to do something with Python so I looked through a list of Python libraries, What caught my eye was Pyautogui, a library for creating mouse and keyboard inputs from a script.</p>
+<p>After messing around and making some programs to play video games I thought it would be amusing to use microsoft paint with it. This became my first foray into generative art.</p>
+<p>First I did basic geometric shapes, starting with a circle.</p>
+<figure class="highlight python"><figcaption><span>circle code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">makeCircle</span>(<span class="params">height</span>):</span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span>(keyboard.is_pressed(<span class="string">&quot;esc&quot;</span>)):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        pyg.dragRel(math.ceil(math.cos(i)*height),</span><br><span class="line">        math.ceil(math.sin(i)*height), duration=moveDuration)</span><br><span class="line">        i+=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<img src="/2018/12/09/mspaint-program/wut.png" class="" title="circle attempt">
+
+<p>To my surprise it was not a circle, but some kind of spiral? This process of trying to make an image, failing but making something more interesting is a process I continue doing to this day.</p>
+<p>These two are some of the basic geometry. As you can see the lines are not solid because I was controlling the mouse with equations of the shape and just periodically marking the current value at a constant spacing.</p>
+<p>An example of this is most clear in the circles, I am making some number of points for each circle, but as the circle gets bigger, the lines gets ever more uneven.</p>
+<p>This could be solved with adjusting based on the radius, but it still falls apart in more complicated shapes where within one shape there is no single spacing amount that would always work. For now in the images below I have dialed in the spacing manually.</p>
+<h2 id="some-basic-geometry"><a href="#some-basic-geometry" class="headerlink" title="some basic geometry"></a>some basic geometry</h2><img src="/2018/12/09/mspaint-program/slantedPyramid.png" class="" title="slanted pyramid"> 
+
+<img src="/2018/12/09/mspaint-program/pseudospiral.png" class="" title="circle attempt">
+
+<p>After the circles, triangles and squares I started looking for more interesting shapes, I found the description of some cool shapes on wikipedia like <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Maurer_rose">Maurer roses</a>, <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hypotrochoid">Hypotrochoids</a> and <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lissajous_curve">Lissajous curves</a>. Others I just made up, often changing formulas from shapes I thought looked interesting, I called the shapes after the first <em>horlage</em> because at first they looked like an hourglass.</p>
+<figure class="highlight python"><figcaption><span>Horlage code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">horlageMaurer</span>(<span class="params">n, d, size=<span class="number">40</span></span>):</span><br><span class="line">    xi, yi = pyg.position()</span><br><span class="line">    i=<span class="number">0</span></span><br><span class="line">    theta = d</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span>(keyboard.is_pressed(<span class="string">&quot;esc&quot;</span>)):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        theta += <span class="number">1</span></span><br><span class="line">        x=sin(theta*n*d)</span><br><span class="line">        y=cos(d*theta)</span><br><span class="line">        x*=size</span><br><span class="line">        y*=size</span><br><span class="line">        pyg.moveTo(xi+x, yi+y)</span><br><span class="line">        inverseClick()</span><br><span class="line">        i+=circleDetail</span><br><span class="line">    pyg.mouseUp()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;n = &#123;&#125;, d = &#123;&#125;, ended on &#123;&#125;&quot;</span>.<span class="built_in">format</span>(n,d, theta))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Horlage"><a href="#Horlage" class="headerlink" title="Horlage"></a>Horlage</h2><img src="/2018/12/09/mspaint-program/horlage2-39.png" class="" title="horlage3">
+
+<img src="/2018/12/09/mspaint-program/horlage4-139.png" class="" title="horlage1">
+
+<img src="/2018/12/09/mspaint-program/horlage7-139.png" class="" title="horlage2">
+
+
+<h2 id="Roses"><a href="#Roses" class="headerlink" title="Roses"></a>Roses</h2><img src="/2018/12/09/mspaint-program/flowerSmall.png" class="" title="maurer rose">
+
+<img src="/2018/12/09/mspaint-program/funFlower2.5.png" class="" title="combined roses">
+
+
+
+<p>These were a lot of fun to make, but I wanted to make something more <strong>crazy</strong>. I had heard about fractals, mentioned as some very complicated shape, and thought I would try that. So I found some code from wikipedia on <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Julia_set">Julia sets</a> and gave it a try.</p>
+<p>It was <strong>so</strong> slow, I ended up only dowing every tenth pixel and simplifying to black or white but even still the below image took around 30 minutes before I cut it off.</p>
+<h2 id="fractals"><a href="#fractals" class="headerlink" title="fractals"></a>fractals</h2><img src="/2018/12/09/mspaint-program/julia.3061.png" class="" title="the first fractal">
+
+<p>At the time I thought it was just because fractals were so complicated, but it was actually because I did not know how fractals worked, Knowing what I do now, I could have done the following two modifications to make it run in 2 seconds or less.</p>
+<h2 id="1-stop-checking-for-interrupts"><a href="#1-stop-checking-for-interrupts" class="headerlink" title="1. stop checking for interrupts"></a>1. stop checking for interrupts</h2><p>My programs took control of the mouse and keyboard and often went very wrong, I broke my computer several times when the mouse clicked many things it should not have. To counteract this I added a hotkey that terminated the program, this was usually fine, but in the fractal code it was checking 1000 times per pixel which was just too much.</p>
+<h2 id="2-lower-infinity"><a href="#2-lower-infinity" class="headerlink" title="2. lower infinity"></a>2. lower infinity</h2><p>I will go into detail in later posts but instead of doing 1000 rounds of calculations per pixel I could have lowered it to about 30 and gotten the same result.</p>
+<p>At the time, I thought it was slow just because I was using paint and thought it would be faster if I switched to making images directly with code instead of wasting time on mouse operations.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2017/04/27/starting-game/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2018-12-09
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Python/" title="Python">
+                        #Python
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Art/" title="Art">
+                        #Art
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2019/02/14/fractals/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#some-basic-geometry"><span class="toc-text">some basic geometry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Horlage"><span class="toc-text">Horlage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roses"><span class="toc-text">Roses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fractals"><span class="toc-text">fractals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-stop-checking-for-interrupts"><span class="toc-text">1. stop checking for interrupts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-lower-infinity"><span class="toc-text">2. lower infinity</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + mspaint-program + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2018%2F12%2F09%2Fmspaint-program%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2018/12/09/mspaint-program/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

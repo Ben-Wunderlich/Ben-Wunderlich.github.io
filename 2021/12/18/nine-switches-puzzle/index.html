@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      nine-switches-puzzle 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/11/21/Internet-Protocols/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2022/05/09/linear-solver/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">nine-switches-puzzle</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2021-12-18
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Kotlin/" title="Kotlin">
+                    #Kotlin
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Android/" title="Android">
+                    #Android
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Javascript/" title="Javascript">
+                    #Javascript
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>In many games I have encountered this one particular puzzle.</p>
+<h2 id="diablo"><a href="#diablo" class="headerlink" title="diablo"></a>diablo</h2><img src="/2021/12/18/nine-switches-puzzle/diablo.jpg" class="" title="puzzle in diablo">
+
+<h2 id="path-of-exile"><a href="#path-of-exile" class="headerlink" title="path of exile"></a>path of exile</h2><img src="/2021/12/18/nine-switches-puzzle/poe.jpg" class="" title="puzzle in poe">
+
+<p>I think that it has showed up in these and many other games because it</p>
+<ul>
+<li>is an easy puzzle to implement</li>
+<li>is relatively easy to solve even if you just click randomly</li>
+<li>can be adapted into any world(torches, switches, crystals, etc).</li>
+</ul>
+<h2 id="your-turn-to-try-it"><a href="#your-turn-to-try-it" class="headerlink" title="your turn to try it"></a>your turn to try it</h2><p>In case you are unfamiliar with the puzzle, here is a quick web version I whipped up. Feel free to experiment and try to solve the puzzle by lighting up all the buttons.</p>
+<iframe src="puzzle" width="400" height="400" frameborder="0" loading="lazy" allowfullscreen></iframe>
+
+<h2 id="my-version"><a href="#my-version" class="headerlink" title="my version"></a>my version</h2><p>In order to have an implementation I could practice with, I made an android app with Android Studio and Kotlin. To assist in testing the puzzle I included</p>
+<ul>
+<li>a switch to toggle whether switches also changed on diagonals</li>
+<li>a counter to track how many switches it took to complete</li>
+<li>a randomize button to solve from a place other than the default</li>
+</ul>
+<img src="/2021/12/18/nine-switches-puzzle/mine.png" class="" title="puzzle in my app">
+
+<h2 id="solving-it"><a href="#solving-it" class="headerlink" title="solving it"></a>solving it</h2><p>Over the next month or so I tried solving the puzzle while on the bus, using every technique I could think of, at first randomly, then I found a method. </p>
+<p>All I had to do was look at a switch layout, press every switch that was currently unlit, then look at how it was arranged and do it again. This works both with and without diagonals, the order of pushing the buttons doesn’t matter, and it works from any arbitrary state of the puzzle. However it is not always fast, especially for some randomized puzzles.</p>
+<p>A few months after this I was in a course in machine learning and we used search algorithms to solve puzzles, using each possible state of the puzzle as a node, and two nodes are connected if they can be reached by a single move. I converted to problem to a graph and confirmed that the optimal solution from the initial state is 8 moves.</p>
+<p>This is great but from an arbitrary state I still don’t know how to solve in an optimal way. I could find it using the graph search algorithms, but doing that didn’t give me an algorithm a human could use.</p>
+<p>I then did some research on the puzzle and found it is based on <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lights_Out_(game)">lights out</a> which is more generalized and is solved by turning all lights off instead of on. Marlow Anderson and Todd Feil proved in 1998 that the minimal solution is equal to the number of unlit switches, and the order of button pushes doesn’t matter. They also found a very similar algorithm to the one I did, however it remains still unclear if there is a better human algorithm.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/11/21/Internet-Protocols/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2021-12-18
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Kotlin/" title="Kotlin">
+                        #Kotlin
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Android/" title="Android">
+                        #Android
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Javascript/" title="Javascript">
+                        #Javascript
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2022/05/09/linear-solver/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#diablo"><span class="toc-text">diablo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#path-of-exile"><span class="toc-text">path of exile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#your-turn-to-try-it"><span class="toc-text">your turn to try it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#my-version"><span class="toc-text">my version</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solving-it"><span class="toc-text">solving it</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + nine-switches-puzzle + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2021%2F12%2F18%2Fnine-switches-puzzle%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2021/12/18/nine-switches-puzzle/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

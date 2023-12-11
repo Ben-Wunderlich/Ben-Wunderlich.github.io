@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Internet-Protocols 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/04/21/Every-Color/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2021/12/18/nine-switches-puzzle/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">Internet-Protocols</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2021-11-21
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Python/" title="Python">
+                    #Python
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>I was in a course on computer communication and we were learning all about the protocols that makes the internet possible. To make it a little different, we were allowed to assume what responses would be when sending packets, this is less secure but can sharply reduce the number of packets sent. More marks would be awarded to the fastest protocols.</p>
+<h1 id="background-stuff"><a href="#background-stuff" class="headerlink" title="background stuff"></a>background stuff</h1><p>First I’ll recap udp, tcp and HTTP, I am going to ignore everything below UDP(like IP).</p>
+<h2 id="what-is-UDP"><a href="#what-is-UDP" class="headerlink" title="what is UDP?"></a>what is UDP?</h2><p>UDP simply takes some bytes of data and sends it over a network to an address.</p>
+<h2 id="and-TCP"><a href="#and-TCP" class="headerlink" title="and TCP?"></a>and TCP?</h2><p>TCP is similar to UDP except it can send a stream of bytes and also keeps track of whether messages are received successfully, resending them if it failed and keeping them in order.</p>
+<h2 id="HTTP-on-top"><a href="#HTTP-on-top" class="headerlink" title="HTTP on top"></a>HTTP on top</h2><p>HTTP is built on top of UDP or TCP and deals with sending and receiving complete files along with response codes that can communicate anything that needs to be know by the other party.</p>
+<h1 id="what-I-did"><a href="#what-I-did" class="headerlink" title="what I did"></a>what I did</h1><h2 id="making-HTTP"><a href="#making-HTTP" class="headerlink" title="making HTTP"></a>making HTTP</h2><p>First we had to recreate the HTTP protocol using tcp, this was a lot of parsing strings to check response codes, and managing multiple connections so everything doesn’t interfere with each other.</p>
+<figure class="highlight python"><figcaption><span>code to handle new message from some client</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">handleReadable</span>(<span class="params">sock</span>):</span><br><span class="line">    data, addr = sock.recvfrom(rdpBuffer*<span class="number">2</span> + <span class="number">1</span>)<span class="comment">#+1 in case buffer size is set to 0</span></span><br><span class="line">    <span class="keyword">if</span> addr <span class="keyword">not</span> <span class="keyword">in</span> connections:<span class="comment">#new connection</span></span><br><span class="line">        connection = rdp.accept(servSocket, addr, rdpBuffer, rdpPayloadSize)</span><br><span class="line">        connections[addr] = connection</span><br><span class="line">        request_message[addr] = queue.Queue()</span><br><span class="line">        response_messages[addr] = queue.Queue()</span><br><span class="line">        bufferStrings[addr] = queue.Queue()</span><br><span class="line"></span><br><span class="line">    batchMsg = connections[addr].recv(data)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(batchMsg) == <span class="number">0</span>:<span class="comment">#nothing to do</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span>, addr</span><br><span class="line">    </span><br><span class="line">    dataArr = [el <span class="keyword">for</span> el <span class="keyword">in</span> batchMsg <span class="keyword">if</span> el != rdp.CLOSE_STRING]</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(dataArr) != <span class="number">0</span>:<span class="comment">#there is data</span></span><br><span class="line">        bufferStrings[addr].put(dataArr.pop())</span><br><span class="line">        splitToQueue(addr)</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> request_message[addr].empty():</span><br><span class="line">            parseFullMessage(addr, request_message[addr].get())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>  rdp.CLOSE_STRING <span class="keyword">in</span> batchMsg:</span><br><span class="line">        deathRow.add(addr)</span><br><span class="line">        handleDeathList()</span><br><span class="line">    <span class="keyword">return</span> batchMsg, addr</span><br></pre></td></tr></table></figure>
+
+<h2 id="making-TCP"><a href="#making-TCP" class="headerlink" title="making TCP"></a>making TCP</h2><p>Then we had to remake tcp using udp, this was where things got interesting, it was a lot more variable how you could approach the problem, and it needed a lot of code to check all the different ways messages could be received, lost, reordered at each part of the connection lifecycle.</p>
+<p>The overall idea of my design was instead of sending back responses one at a time like many others did, I would have a buffer of messages to send, and as each packet is unpacked, add the responses and assume client responses, sending them all combined together once the packet is fully parsed. Because the task was to make as efficient as possible, Instead of going for simplicity I made lots of data structures to manage each stage of the connection and the data transmitted from and to the client. This decision made it more complicated but also made almost every operation O(1).</p>
+<figure class="highlight python"><figcaption><span>function for overall handling of responses</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">handlePacket</span>(<span class="params">self, multiPack</span>):</span><br><span class="line">    self.logCommand(self.EVENTS[<span class="number">1</span>], multiPack)</span><br><span class="line">    </span><br><span class="line">    toReturn = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> multiPack.rstCom:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;HANDLING RESET&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> self.RESET_STRING</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> multiPack.synCom:</span><br><span class="line">        toReturn.append(self.handleSynCommand(multiPack))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> multiPack.datCom:</span><br><span class="line">        toReturn.append(self.handleDatCommand(multiPack))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> multiPack.ackCom:</span><br><span class="line">        toReturn.append(self.handleAck(multiPack))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> multiPack.finCom:</span><br><span class="line">        toReturn.append(self.handleFinCommand(multiPack))</span><br><span class="line"></span><br><span class="line">    toReturn = [el <span class="keyword">for</span> el <span class="keyword">in</span> toReturn <span class="keyword">if</span> el != <span class="literal">None</span>]</span><br><span class="line">    <span class="keyword">return</span> toReturn</span><br></pre></td></tr></table></figure>
+
+<p>This next code block is a lot to read but I am including it because it is among the most important parts of the program, it deals with organizing the data being received from an incoming packet, making sure that everything is in order.</p>
+<figure class="highlight python"><figcaption><span>function for managing information unpacking</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">manageWindow</span>(<span class="params">self, multiPack</span>):</span><br><span class="line">    <span class="comment">#list of payloads transfered</span></span><br><span class="line">    consumedPayloads = []</span><br><span class="line">    payloads = []</span><br><span class="line">    i = self.currentAck</span><br><span class="line"></span><br><span class="line">    <span class="comment">#while next expected seq is in the buffer, move from buffer to file</span></span><br><span class="line">    <span class="keyword">while</span> i <span class="keyword">in</span> self.windowObj:</span><br><span class="line">        ithPayload = self.windowObj[i][<span class="number">0</span>]</span><br><span class="line">        ithLength = self.windowObj[i][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment">#if is not in order</span></span><br><span class="line">        <span class="keyword">if</span> i != self.currentAck:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        payloads.append(ithPayload)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#makes known that this seq was accepted in case ack is lost</span></span><br><span class="line">        self.ackedSeqs.add(i)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#increase window by length of payload</span></span><br><span class="line">        self.recvWindowSize += ithLength</span><br><span class="line">        </span><br><span class="line">        self.currentAck += ithLength</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;ack changed to&quot;</span>, self.currentAck)</span><br><span class="line">        multiPack.seqNum += ithLength</span><br><span class="line"></span><br><span class="line">        <span class="comment">#delete from window</span></span><br><span class="line">        consumedPayloads.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#advance next expected seq num</span></span><br><span class="line">        i += ithLength</span><br><span class="line"></span><br><span class="line">    <span class="comment">#get rid of the payloads that were added to file</span></span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(consumedPayloads) &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">del</span> self.windowObj[consumedPayloads.pop()]</span><br><span class="line"></span><br><span class="line">    <span class="comment">#payloads have been consumed</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(payloads) &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>.join(payloads)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#don&#x27;t have space for the actual package so drop highest package to make space for the repeat package</span></span><br><span class="line">    <span class="keyword">if</span> self.recvWindowSize &lt; self.CHUNK_SIZE:</span><br><span class="line">        self.uppercleanse()</span><br></pre></td></tr></table></figure>
+
+<p>This project took a lot of time and I spent many hours testing how my protocols worked in crazy situations, I would try setups like setting a 95% drop rate, 100ms of jitter and see how it performed, this was interesting to see and also very good for catching bugs.</p>
+<p>After everyone had submitted their assignments, they were tested and timed. My solution was the fastest so it came in first place!</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/04/21/Every-Color/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2021-11-21
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Python/" title="Python">
+                        #Python
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/12/18/nine-switches-puzzle/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#background-stuff"><span class="toc-text">background stuff</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-UDP"><span class="toc-text">what is UDP?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#and-TCP"><span class="toc-text">and TCP?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-on-top"><span class="toc-text">HTTP on top</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#what-I-did"><span class="toc-text">what I did</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#making-HTTP"><span class="toc-text">making HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#making-TCP"><span class="toc-text">making TCP</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Internet-Protocols + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2021%2F11%2F21%2FInternet-Protocols%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2021/11/21/Internet-Protocols/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

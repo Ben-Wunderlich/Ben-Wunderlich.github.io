@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Every-Color 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/19/Labyrinths/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2021/11/21/Internet-Protocols/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">Every-Color</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2021-04-21
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Python/" title="Python">
+                    #Python
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Kotlin/" title="Kotlin">
+                    #Kotlin
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Art/" title="Art">
+                    #Art
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Android/" title="Android">
+                    #Android
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>I was stumbling around the internet when I found this image on a wallpaper subreddit</p>
+<img src="/2021/04/21/Every-Color/og.png" class="" title="inspiration">
+
+<p>I immediately knew I needed to create my own version. A key feature of the image was the fluid nature in which colors changed over space, so I imagined the simplest possible way to create this and decided I would only make things more complicated if that didn’t work.</p>
+<p>The simplest method I imagined to create the pattern is by treating each pixel as a cellular automata that changes color of the children as it reproduces, it would also need to be randomized which cell reproduced so it would spread uniformly from a single point. </p>
+<h1 id="Python-implementation"><a href="#Python-implementation" class="headerlink" title="Python implementation"></a>Python implementation</h1><p>The biggest challenge in the program was how to keep track of which cells were on the edge in a way that could be randomly selected, grew and shrank rapidly, and had constant time access for additions, deletions and checks. My first version used a python dictionary with the position as key and color as value.</p>
+<p>I started with each child having a color being 1 different in one color channel from its parent which looked like this</p>
+<h2 id="first-try"><a href="#first-try" class="headerlink" title="first try"></a>first try</h2><img src="/2021/04/21/Every-Color/frst.png" class="" title="first result">
+
+<p>not exactly what I had hoped for, so I tried changing the amount each child changed by from 1 to 5.</p>
+<h2 id="increase-contrast"><a href="#increase-contrast" class="headerlink" title="increase contrast"></a>increase contrast</h2><img src="/2021/04/21/Every-Color/E2nwj2sM9d.png" class="" title="second result">
+
+<p>This was what I wanted, it wasn’t exactly like the original but had that organic nature I liked about it. Next I tried messing it up, first I tried just popping from the top of an unordered set instead of a dictionary to speed it up.</p>
+<h2 id="using-set"><a href="#using-set" class="headerlink" title="using set"></a>using set</h2><img src="/2021/04/21/Every-Color/XL70xV8Jq9.png" class="" title="set result">
+
+<p>This was faster, but also looked wild, you can see how the set is maintained, however it was a bit too chaotic for me. Next I tried a bunch of variants.</p>
+<h2 id="seeding-pixels-in-X-pattern"><a href="#seeding-pixels-in-X-pattern" class="headerlink" title="seeding pixels in X pattern"></a>seeding pixels in X pattern</h2><img src="/2021/04/21/Every-Color/InyeZvXHLD.png" class="" title="set result">
+
+<h2 id="seeding-some-pixels-with-an-image"><a href="#seeding-some-pixels-with-an-image" class="headerlink" title="seeding some pixels with an image"></a>seeding some pixels with an image</h2><img src="/2021/04/21/Every-Color/oUuOk2qfm0.png" class="" title="set result">
+
+<h2 id="adding-bias-towards-some-colors"><a href="#adding-bias-towards-some-colors" class="headerlink" title="adding bias towards some colors"></a>adding bias towards some colors</h2><img src="/2021/04/21/Every-Color/HrGwXdXD5P.png" class="" title="set result">
+
+<h2 id="using-a-queue"><a href="#using-a-queue" class="headerlink" title="using a queue"></a>using a queue</h2><img src="/2021/04/21/Every-Color/medbaZJBqj.png" class="" title="set result">
+
+<h2 id="bias-to-a-color-and-a-queue"><a href="#bias-to-a-color-and-a-queue" class="headerlink" title="bias to a color and a queue"></a>bias to a color and a queue</h2><img src="/2021/04/21/Every-Color/8LoiwJ1Hu0.png" class="" title="set result">
+
+<h2 id="whatever-happened-here"><a href="#whatever-happened-here" class="headerlink" title="whatever happened here"></a>whatever happened here</h2><img src="/2021/04/21/Every-Color/mMAcv3sPpg.png" class="" title="set result">
+
+<p>Much later found I the <a target="_blank" rel="noopener" href="https://codegolf.stackexchange.com/questions/22144/images-with-all-colors">original problem</a> that inspired this and many other amazing images. There was also a web version someone else made, but they were all incredibly slow, and images that took them 10 hours to render took my program just over a minute. This is thanks to the relaxation of unique color constraint and choice of data structures.</p>
+<h1 id="Making-an-app-for-it"><a href="#Making-an-app-for-it" class="headerlink" title="Making an app for it"></a>Making an app for it</h1><p>I had been meaning to make an android app for a while so I decided to use these algorithms in an app that I could show all the people that ask what kind of stuff I make. Such an app would also let you color pixels manually with a touch so you could control its growth even during runtime.</p>
+<p>So I started using Android Studio, it was amazing for layout and project structure, the activity transition was good and before long I had a prototype. Then came the hard part, <strong>multithreading</strong>. I had to keep track of each touch, where it hit, handle if it was being used by expansion, manually managing refresh rate of screen and ton of other problems that came up.</p>
+<p>But after that I had an app exactly as I had imagined, a main page to seed, run and pause the algorithm </p>
+<img src="/2021/04/21/Every-Color/main.png" class="" title="main screen">
+
+<p>and a settings page to modify the behavior of the algorithm, even during runtime when it is paused.</p>
+<img src="/2021/04/21/Every-Color/settings.png" class="" title="settings screen">
+
+<p>For this app I refined the data structure to be just an array, as each pixel is filled, its location is added to the first free spot in the array(kept with pointer). On delete its location is swapped with the last element(pointer) and the pointer is decreased by one, this makes it entirely unordered but still able to be chosen randomly by picking a number less than the pointer and so does not need to be ordered. You may be asking, what happens when the array gets to big? Well, I resize it, I know I know, not exactly constant time insertions, but it is fast enough and it is generally fine.</p>
+<p>The one other form of the algorithm I implemented in the app I called <em>crazy snake</em>, it is similar to using a queue, where you always pick the first element in the array, this is not exactly a queue but is close enough and the randomness only adds to it in my opinion.</p>
+<p>I then published the app on the android app store under the name EveryColor, mostly just to get experience publishing an app. Just publishing the app was harder than the entire rest of the process, there were so many tracks and checks and waiting periods, it was just <strong>a lot</strong>. But eventually it was done and it is up there now if you want to check it out.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/19/Labyrinths/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2021-04-21
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Python/" title="Python">
+                        #Python
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Kotlin/" title="Kotlin">
+                        #Kotlin
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Art/" title="Art">
+                        #Art
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Android/" title="Android">
+                        #Android
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2021/11/21/Internet-Protocols/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-implementation"><span class="toc-text">Python implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#first-try"><span class="toc-text">first try</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#increase-contrast"><span class="toc-text">increase contrast</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-set"><span class="toc-text">using set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#seeding-pixels-in-X-pattern"><span class="toc-text">seeding pixels in X pattern</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#seeding-some-pixels-with-an-image"><span class="toc-text">seeding some pixels with an image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adding-bias-towards-some-colors"><span class="toc-text">adding bias towards some colors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-a-queue"><span class="toc-text">using a queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bias-to-a-color-and-a-queue"><span class="toc-text">bias to a color and a queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whatever-happened-here"><span class="toc-text">whatever happened here</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Making-an-app-for-it"><span class="toc-text">Making an app for it</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Every-Color + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2021%2F04%2F21%2FEvery-Color%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2021/04/21/Every-Color/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

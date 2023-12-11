@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      Map-Annotater 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/11/14/Pydoku/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/19/Labyrinths/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">Map-Annotater</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2020-12-18
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Javascript/" title="Javascript">
+                    #Javascript
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Electron/" title="Electron">
+                    #Electron
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <h2 id="the-idea"><a href="#the-idea" class="headerlink" title="the idea"></a>the idea</h2><p>I had been making D&amp;D adventures for a few years and had been using text files to keep track of everything. But I started to find the amount of text files difficult to navigate so I tried to imagine a better solution for me. I realized that most of the game was tied to moving geographically, so a solution could use a map, and have markers that you can tie information to, and during game instead of having to sort though text files I could just click on the location the party went to.</p>
+<p>I searched the internet for this solution, something someone had made which I could adapt for my uses, starting at ttrpg forums then slowly broadening my search. I could not find a tool to could use, so I decided I would make it myself.</p>
+<h2 id="my-solution"><a href="#my-solution" class="headerlink" title="my solution"></a>my solution</h2><p>I was still pretty early inexperienced in making applications at this point so I googled different frameworks to create it in and decided to make it in electron, this ended up creating a lot of problems, but at least I had the entire internet of node modules to help me out.</p>
+<h2 id="making-the-app"><a href="#making-the-app" class="headerlink" title="making the app"></a>making the app</h2><p>Creating the app itself was a lot of fairly easy tasks,</p>
+<ul>
+<li>setting up the toolbar</li>
+<li>keyboard shortcuts</li>
+<li>adding elements</li>
+<li>tuning a user interface</li>
+<li>making icons</li>
+<li>click and drag multiselect</li>
+<li>highlighting markers</li>
+<li>information format, storage and reading</li>
+<li>click and drag panning</li>
+<li>multiple project saving and navigation</li>
+<li>undoing text writing and marker deletion</li>
+</ul>
+<h2 id="zooming-in"><a href="#zooming-in" class="headerlink" title="zooming in"></a>zooming in</h2><p>Those were each challenges, but by far the hardest thing in this project was <em>image zooming</em>, I wanted it to work like google maps, zooming towards the mouse using the scroll wheel. I <em>thought</em> it would be <em>easy</em>, <strong>it was not</strong>. What I didn’t know yet was that while adjusting the size of an image was easy, adjusting for an offset and doing so around the mouse is less easy. But even worse was how each marker was not tied to the image, so I had to scale them manually as well, plus the markers could change size and had to have their size and position changed while zoomed in and the markers had to be saved in a way that when loaded were in the same place.</p>
+<h2 id="finishing-up"><a href="#finishing-up" class="headerlink" title="finishing up"></a>finishing up</h2><p>Eventually, mercifully, I figured out all the math and coordinate space switching I needed and created an app that I love. Each marker has tabs so that I can store multiple groups of information in one spot, and icons to indicate which campaign it is relevant for. It is not the prettiest, but I use it all the time, and perhaps the best thing about it is when I don’t like how something works, unlike with most apps <strong>I can change it!</strong></p>
+<img src="/2020/12/18/Map-Annotater/demo.png" class="" title="demo">
+
+<p>After spending all this time, I realized I had only ever ran the program in debug mode, and never compiled for release, in fact I didn’t know it could be compiled for release. <strong>Facepalm</strong>. When I tried to compile it, stuff went wrong, <em>everything</em> went wrong, I tried for a while to adapt it, but it wasn’t worth the effort so instead I made a batch script to run it in debug mode easily, rather than remake the entire app.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/11/14/Pydoku/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2020-12-18
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Javascript/" title="Javascript">
+                        #Javascript
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Electron/" title="Electron">
+                        #Electron
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/19/Labyrinths/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#the-idea"><span class="toc-text">the idea</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#my-solution"><span class="toc-text">my solution</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#making-the-app"><span class="toc-text">making the app</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zooming-in"><span class="toc-text">zooming in</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#finishing-up"><span class="toc-text">finishing up</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Map-Annotater + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2020%2F12%2F18%2FMap-Annotater%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2020/12/18/Map-Annotater/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

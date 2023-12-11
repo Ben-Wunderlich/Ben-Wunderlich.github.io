@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      starting-game 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2018/12/09/mspaint-program/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">starting-game</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2017-04-27
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Unity/" title="Unity">
+                    #Unity
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Javascript/" title="Javascript">
+                    #Javascript
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>The idea of game development was not new to me, I had dissected game files since I was a kid playing harry potter rpg games, but I had never given a thought to doing it myself.</p>
+<p>I was watching twitch one day, looking for some new channels, when I stumbled into Markipliers stream. He mentioned that Unity was going just made free, and that you could use it to make games, and for whatever reason, I immediately knew I had to do it. I was still in chemistry at the time and had never written a line of code in my life, but I knew that I was going to make a game.</p>
+<p>After installing, I messed around and created this using object creation, rotation, moving and scaling.</p>
+<img src="/2017/04/27/starting-game/man.png" class="" title="unity creation">
+
+<p>But this was not a game, and after looking through some forums I realized that to make a game I would need to use… <em>code</em>. I saw people were making code either in something called C# or something called Javascript, so naturally to decide which to use, I flipped a coin, which came up javascript.</p>
+<p>Now I finally began my journey into programming, at first it was just lots and lots of looking through forum posts, copying lines and mashing them together without any knowledge on how any programming language worked, only what each line did, so I worked backwards from that to learn the language.</p>
+<p>One funny thing I remember from this time was using integers to keep track of if a quest segment was active or not, having it be either 1 or 0. After doing most of the game like this I discovered this mystical object called a <em>boolean</em>, I just remember being so excited that there was something better than an integer for what I was doing.</p>
+<figure class="highlight javascript"><figcaption><span>drag sitting up.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">SubjectiveSphere</span> : <span class="title class_">GameObject</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Update</span> () &#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="title class_">SubjectiveSphere</span>.<span class="property">active</span>) &#123;</span><br><span class="line">		<span class="title class_">GetComponent</span>.&lt;<span class="title class_">Animation</span>&gt;() .<span class="title class_">Play</span>(<span class="string">&quot;GettingUp&quot;</span>);</span><br><span class="line">		<span class="title class_">SubjectiveSphere</span>.<span class="title class_">SetActive</span>(<span class="literal">false</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>At this point I really wanted to keep each file as small as possible, so each part of a quest is a single file, and I didn’t have any concept of generalizing code and making a framework, so my quest system was many, many files that all looked like the below code.</p>
+<figure class="highlight javascript"><figcaption><span>Quest002Start.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">PlayerText</span> : <span class="title class_">GameObject</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">QuestStatus</span> : <span class="title class_">GameObject</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">OnTriggerEnter</span> (info : <span class="title class_">Collider</span>) &#123;</span><br><span class="line">	transform.<span class="property">position</span> = <span class="title class_">Vector3</span>(<span class="number">0</span>, -<span class="number">200</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="title class_">PlayerText</span>.<span class="title class_">SetActive</span>(<span class="literal">true</span>);</span><br><span class="line">	<span class="title class_">PlayerText</span>.<span class="property">GetComponent</span>.&lt;<span class="title class_">Text</span>&gt;().<span class="property">text</span> = <span class="string">&quot;Looks like a village over there.&quot;</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="title class_">WaitForSeconds</span> (<span class="number">1.8</span>);</span><br><span class="line">	<span class="title class_">PlayerText</span>.<span class="property">GetComponent</span>.&lt;<span class="title class_">Text</span>&gt;().<span class="property">text</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="title class_">WaitForSeconds</span> (<span class="number">1.5</span>);</span><br><span class="line">	<span class="title class_">PlayerText</span>.<span class="property">GetComponent</span>.&lt;<span class="title class_">Text</span>&gt;().<span class="property">text</span> = <span class="string">&quot;I should totally go investigate.&quot;</span>;</span><br><span class="line">	<span class="keyword">yield</span> <span class="title class_">WaitForSeconds</span> (<span class="number">2</span>);</span><br><span class="line">	<span class="title class_">PlayerText</span>.<span class="property">GetComponent</span>.&lt;<span class="title class_">Text</span>&gt;().<span class="property">text</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="title class_">PlayerText</span>.<span class="title class_">SetActive</span>(<span class="literal">false</span>);</span><br><span class="line">	<span class="title class_">QuestStatus</span>.<span class="property">GetComponent</span>.&lt;<span class="title class_">Text</span>&gt;().<span class="property">text</span> = <span class="string">&quot;Active Quest: Reach the village.&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>For those unfamiliar with Unity, those lines above Start() each create a drag and drop location where you can put an object from the game. This was the only way I knew to get an objects reference(I didn’t have the concept of a reference) and I didn’t know you could also do it for other things like an integer or boolean. You may notice I was passing ‘true’ and ‘false’ in the code above, but I wasn’t aware that was a boolean, it was just some thing you put into a function.</p>
+<p>I kept adding new features for a few months, adding teleporters, combat and memes until I had something that vaguely resembled a game, but because I did everything individually it was a lot of work and I didn’t feel like continuing with it. </p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2017-04-27
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Unity/" title="Unity">
+                        #Unity
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Javascript/" title="Javascript">
+                        #Javascript
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2018/12/09/mspaint-program/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + starting-game + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2017%2F04%2F27%2Fstarting-game%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2017/04/27/starting-game/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

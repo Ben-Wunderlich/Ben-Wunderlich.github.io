@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      fractals 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2018/12/09/mspaint-program/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2019/12/24/fractal-program/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">fractals</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2019-02-14
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Python/" title="Python">
+                    #Python
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Art/" title="Art">
+                    #Art
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>As mentioned in the mspaint post I decided to continue my exploration into fractals, starting with the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Julia_set">Julia set</a>.</p>
+<h1 id="how-fractals-work"><a href="#how-fractals-work" class="headerlink" title="how fractals work"></a>how fractals work</h1><p>Despite how incredibly complicated fractals can look, the code that generates them is actually very easy to understand Lets go through it in 4 steps.</p>
+<ol>
+<li>take 2 numbers, the x and y coordinates, put them through <em>the computations</em> that produces 2 output numbers. </li>
+<li>if the output numbers are <em>too big</em>, stop. Otherwise feed the output back into <em>the computations</em> as the input.</li>
+<li>check how many times you fed it through the computations before it got too big, lets call that number depth, which is what we actually care about.</li>
+<li>Each pixel has one depth value, find some way to <em>make an image</em> with those values.</li>
+</ol>
+<p>The is the important stuff, now to answer a few specific remaining questions, what is <em>too big</em>, what are <em>the computations</em> and how do you actually <em>make an image</em> with the depth values?.</p>
+<h2 id="the-computations"><a href="#the-computations" class="headerlink" title="the computations"></a>the computations</h2><p>the computations are what vary depending on which fractal it is, for example mandelbrot takes x, y as real and imaginary of complex plane and output is z^2 + c, where c is the initial complex value. Julia sets are the same except c is a constant value over the entire program instead of changing for each pixel.</p>
+<p>What can look like a lot of math is mostly just implementing complex numbers.</p>
+<h2 id="too-big"><a href="#too-big" class="headerlink" title="too big"></a>too big</h2><p>Under the normal definition two numbers are too big if they are outside of a circle of some chosen radius. This creates a problem if this is the only way to check if the numbers are <em>too big</em> because if they stay within the circle infinitely the program will never end. So we also set some maximum depth value and just end that pixels calculation once it gets there.</p>
+<h2 id="make-an-image"><a href="#make-an-image" class="headerlink" title="make an image"></a>make an image</h2><p>A pixel can have its color defined by 3 channels, red, green blue(rgb). But we only have one number to work with, the depth, how you turn that one number into 3 is very subjective and I continue to experiment with it. For now I will give you a few ways just for reference.</p>
+<ul>
+<li>duplicate the depth, divide by the largest and multiply by 255. This will give a greyscale image.</li>
+<li>divide by the max and make 0 one color and 1 another color. This will give a gradient between the two colors.</li>
+<li>take the modulo of the depth then use one of the above. This will give a repeating pattern that can make it easier to see complicated structures.</li>
+</ul>
+<p>What I did with the first fractal in mspaint(below) was make the dot white if the depth was less than 500, and black if it was greater, with a maximum depth of 1000.</p>
+<img src="/2019/02/14/fractals/julia.3061.png" class="" title="the first fractal">
+
+<p>I would not recommend this approach.</p>
+<h2 id="normal-julia-sets"><a href="#normal-julia-sets" class="headerlink" title="normal julia sets"></a>normal julia sets</h2><img src="/2019/02/14/fractals/11julia-0.55.png" class="" title="simple fractal">
+<img src="/2019/02/14/fractals/83julia0.35.png" class="" title="horlage3">
+
+<p>For the above images I made it so depth 0 is black and max depth is blue. These are awesome but I couldn’t really tell what was going on, so I zoomed in and applied a strange technique. I made a random color for each depth value and made each pixel be colored according to that mapping. This made it much easier to see each layer individually even if normally they would be close in color. This produced an image that would pull me into exploring fractals for the next year of my life.</p>
+<h2 id="random-colors"><a href="#random-colors" class="headerlink" title="random colors"></a>random colors</h2><img src="/2019/02/14/fractals/38julia0.37.png" class="" title="the deep dive">
+
+<p>To say this image captivated me would be an understatement, I must have looked at if for half an hour, trying to understand what I saw. I knew what every line of code did, but this… <strong>why does this happen?</strong></p>
+<h2 id="breaking-all-the-rules"><a href="#breaking-all-the-rules" class="headerlink" title="breaking all the rules"></a>breaking all the rules</h2><p>After getting used to how the normal julia set looked, I realized the equation was important but didn’t know that it was related to complex numbers, I thought it was just some algebraic equation.</p>
+<figure class="highlight python"><figcaption><span>original code</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">juliaPixel</span>(<span class="params">c, x, y, max_depth</span>):</span><br><span class="line">    depth=<span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> depth &lt;= max_depth &amp;&amp; sqrt(x ** <span class="number">2</span> + y ** <span class="number">2</span>) &lt; <span class="number">2</span>:</span><br><span class="line">        x_temp = x ** <span class="number">2</span> - y ** <span class="number">2</span>  </span><br><span class="line">        y = <span class="number">2</span> * x * y + c</span><br><span class="line">        x = x_temp + c</span><br><span class="line"></span><br><span class="line">        depth+=<span class="number">1</span></span><br><span class="line">    i = depth / <span class="built_in">max</span> * <span class="number">255</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="number">0</span>,i/<span class="number">2</span>,i)</span><br></pre></td></tr></table></figure>
+
+<p>I then started modifying the equation, creating ever more unusual variations. I didn’t understand yet that <strong>sqrt(x ** 2 + y ** 2) &lt; 2</strong> was preventing these new fractals from expanding beyond a circle of radius 1.4, so I had to change the numbers to work within that.</p>
+<img src="/2019/02/14/fractals/58nuJulia0.1.png" class="" title="experiment1">
+
+<img src="/2019/02/14/fractals/66nuJulia-0.1.png" class="" title="experiment2">
+
+<p>With the more complicated renders, especially when done with large image sizes, My program started getting incredibly slow, I have a distinct memory of running a program for over half an hour while I was on the bus. So I went line by line, until I finally realized that I had left over program interrupt code from when it was an mspaint program, the interrupts were making it run for 20 times longer, without them it went from 30mins to 1-2 minutes.</p>
+<img src="/2019/02/14/fractals/97nuJulia0.3.png" class="" title="experiment3">
+
+<p>This was very fun, but changing the equation in the code every time got tiresome, and I started running into the how slow python is as I increased equation complexity and the max depth. But Changing to a compiled language would also make rewriting formulas even more of a problem, so I would have to find a better way to go about making the fractals I imagined. This is already long so I’ll continue this in the fractal-program post.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2018/12/09/mspaint-program/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2019-02-14
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Python/" title="Python">
+                        #Python
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Art/" title="Art">
+                        #Art
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2019/12/24/fractal-program/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#how-fractals-work"><span class="toc-text">how fractals work</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#the-computations"><span class="toc-text">the computations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#too-big"><span class="toc-text">too big</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#make-an-image"><span class="toc-text">make an image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#normal-julia-sets"><span class="toc-text">normal julia sets</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#random-colors"><span class="toc-text">random colors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-all-the-rules"><span class="toc-text">breaking all the rules</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + fractals + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2019%2F02%2F14%2Ffractals%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2019/02/14/fractals/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
