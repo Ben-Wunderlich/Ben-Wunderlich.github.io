@@ -200,7 +200,7 @@
 <p>First the ray checks every object in the scene based on the objects mathematical formula to see if it should collide. If a collision is detected, it checks the angle between it and the light source(s) to see what color that part of the image it should be. There is one ray sent out per pixel in the resulting image, and that ray only collects information for that pixel.</p>
 <p>Here is what that looks like.</p>
 <img src="/2023/02/10/graphics-renderers/phong.png" class="" title="basic image">
-<p>It is clearly visible what is happening, but lacks a little… <em>spice</em>, to make it better, instead of just stopping at one collision, we keep going and repeat the color picking process after each bounce or a ray, stopping when the ‘sky’ is hit, this allows for reflections and shadows.</p>
+<p>It is clearly visible what is happening, but lacks a little… <em>spice</em>, to make it better, instead of just stopping at one collision, we keep going and repeat the color picking process after each bounce of a ray, stopping when the ‘sky’ is hit, this allows for reflections and shadows.</p>
 <img src="/2023/02/10/graphics-renderers/reflections.png" class="" title="reflections and shadows">
 <p>This looks pretty good, but it should be noted to make one single image took around 2 seconds for this very simple scene with fairly fast C++ code.</p>
 <h1 id="rasterization"><a href="#rasterization" class="headerlink" title="rasterization"></a>rasterization</h1><p>Rasterization is a bit strange in the technique it uses, but is very useful, it involves a lot of transforming spaces which is done by multiplying coordinates with matrices. How this exactly works isn’t important, but matrices can do things like scaling and moving coordinates.</p>
@@ -216,7 +216,7 @@
 
 <h3 id="overlap"><a href="#overlap" class="headerlink" title="overlap"></a>overlap</h3><p>These transformations ensure objects individually appear correctly, but a problem now is with objects that overlap. If each object is just written to the screen, the order objects are rasterized will change the result, with the last objects being on top. This is bad. To solve this you can record each pixels distance to the camera, and the pixel can only be changed by an object whose position is closer at that pixel.</p>
 <h3 id="speed"><a href="#speed" class="headerlink" title="speed"></a>speed</h3><p>Recall that in ray tracing each object in the scene had to be checked  after each bounce by every ray, but by using this method you can instead do a single operation for each object in the scene. This more efficient approach makes it possible to do realtime rendering of much more complex objects made up of many shapes, for this we only supported triangles and loaded them from 3d render files.</p>
-<p>There is so, so much detail I had to leave out, like z-fighting, how shading worked, translucent objects, barycentric coordinates and more. There are whole courses about it which go into more detail.</p>
+<p>There is so, so much detail I had to leave out, like z-fighting, how shading worked, translucent objects, barycentric coordinates and more. There are whole courses about it which goes into more detail.</p>
 
       </div>
       

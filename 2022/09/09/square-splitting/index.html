@@ -194,10 +194,10 @@
       </div>
 
       <div class="markdown-body">
-        <p>I was looking at raytracing and 3d rendering when I had the thought of making a program to split squares when you touched them, p5js seemed like a good fit for it. The algorithm is very simple, each square is stored as top left and bottom right corner, once a touch happens, just go through each and check if it is within the bounds. To do the split is also simple, just compute the center of the square, remove the original and add 4 more smaller.</p>
+        <p>I was looking at raytracing and 3d rendering when I had the thought of making a program to split squares when you touched them and p5js seemed like a good fit for it. The algorithm is very simple, each square is stored as top left and bottom right corner, once a touch happens, just go through each pair of coordinates and check if it is within the bounds. To do the split is also simple, just compute the center of the square, remove the original and add 4 more smaller squares.</p>
 <h2 id="basic-testing"><a href="#basic-testing" class="headerlink" title="basic testing"></a>basic testing</h2><img src="/2022/09/09/square-splitting/1662775826.png" class="" title="basic">
 
-<p>Things got a little more interesting when I added some color effects, I also did the touches with a program instead</p>
+<p>Things got a little more interesting when I added some color effects, I also changed it so instead of manually touching each square to trigger splitting I did it programmatically so I could create complex and precise patterns</p>
 <h2 id="spiral"><a href="#spiral" class="headerlink" title="spiral"></a>spiral</h2><img src="/2022/09/09/square-splitting/1662790893.png" class="" title="spiral">
 
 

@@ -194,14 +194,14 @@
       </div>
 
       <div class="markdown-body">
-        <h2 id="the-idea"><a href="#the-idea" class="headerlink" title="the idea"></a>the idea</h2><p>I had been making D&amp;D adventures for a few years and had been using text files to keep track of everything. But I started to find the amount of text files difficult to navigate so I tried to imagine a better solution for me. I realized that most of the game was tied to moving geographically, so a solution could use a map, and have markers that you can tie information to, and during game instead of having to sort though text files I could just click on the location the party went to.</p>
-<p>I searched the internet for this solution, something someone had made which I could adapt for my uses, starting at ttrpg forums then slowly broadening my search. I could not find a tool to could use, so I decided I would make it myself.</p>
-<h2 id="my-solution"><a href="#my-solution" class="headerlink" title="my solution"></a>my solution</h2><p>I was still pretty early inexperienced in making applications at this point so I googled different frameworks to create it in and decided to make it in electron, this ended up creating a lot of problems, but at least I had the entire internet of node modules to help me out.</p>
+        <h2 id="the-idea"><a href="#the-idea" class="headerlink" title="the idea"></a>the idea</h2><p>I had been making D&amp;D adventures for a few years and had been using text files to keep track of everything. But I started to find the amount of text files difficult to navigate so I tried to imagine a better solution for me. I realized that most of the game was tied to moving geographically so a solution could use a map and have markers that you can tie information to, then during game you can click on the icons on a map instead of having to sort though text files.</p>
+<p>I searched the internet for this solution, maybe something which I could adapt for my uses, starting at ttrpg forums then slowly broadening my search. I could not find a tool to could use, so I decided I would make it myself.</p>
+<h2 id="my-solution"><a href="#my-solution" class="headerlink" title="my solution"></a>my solution</h2><p>I was still pretty early inexperienced in making applications at this point so I googled different frameworks to create it in and decided to make it in electron, this ended up creating a lot of problems but at least I had the entire internet of node modules to help me out.</p>
 <h2 id="making-the-app"><a href="#making-the-app" class="headerlink" title="making the app"></a>making the app</h2><p>Creating the app itself was a lot of fairly easy tasks,</p>
 <ul>
 <li>setting up the toolbar</li>
 <li>keyboard shortcuts</li>
-<li>adding elements</li>
+<li>adding markers</li>
 <li>tuning a user interface</li>
 <li>making icons</li>
 <li>click and drag multiselect</li>
@@ -215,7 +215,7 @@
 <h2 id="finishing-up"><a href="#finishing-up" class="headerlink" title="finishing up"></a>finishing up</h2><p>Eventually, mercifully, I figured out all the math and coordinate space switching I needed and created an app that I love. Each marker has tabs so that I can store multiple groups of information in one spot, and icons to indicate which campaign it is relevant for. It is not the prettiest, but I use it all the time, and perhaps the best thing about it is when I don’t like how something works, unlike with most apps <strong>I can change it!</strong></p>
 <img src="/2020/12/18/Map-Annotater/demo.png" class="" title="demo">
 
-<p>After spending all this time, I realized I had only ever ran the program in debug mode, and never compiled for release, in fact I didn’t know it could be compiled for release. <strong>Facepalm</strong>. When I tried to compile it, stuff went wrong, <em>everything</em> went wrong, I tried for a while to adapt it, but it wasn’t worth the effort so instead I made a batch script to run it in debug mode easily, rather than remake the entire app.</p>
+<p>After spending all this time, I realized I had only ever ran the program in debug mode, and never compiled for release, in fact I didn’t know it could be compiled for release. When I tried to compile it, stuff went wrong, <em>everything</em> went wrong, I tried for a while to adapt it, but it wasn’t worth the effort so instead I made a batch script to run it in debug mode easily, rather than remake the entire app.</p>
 
       </div>
       
