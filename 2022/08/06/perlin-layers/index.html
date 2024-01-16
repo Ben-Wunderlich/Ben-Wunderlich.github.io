@@ -194,28 +194,28 @@
       </div>
 
       <div class="markdown-body">
-        <p>I had been using perlin noise for a number of other projects and wondered if I could use it to make something like a topographical map. I started by taking slices of perlin noise, so for example everything between 0.1 and 0.15 is white, then 0.2 and 0.25, which gave this.</p>
+        <p>I had been using perlin noise for a number of other projects and had the idea to use use it to make something like a topographical map. To this end I started by taking slices of perlin noise, so for example everything between 0.1 and 0.15 is white, then 0.2 and 0.25, which gave this result.</p>
 <img src="/2022/08/06/perlin-layers/1659489924.png" class="" title="topographical">
 
 
-<p>Although it is kind of neat, it doesn’t look like a topographical map, the lines are different width which is not an easy problem to solve, and I didn’t bother trying to. Instead, my inspiration took me away from the idea of a topographical map and in an unknown direction, I took a single wider slice and made the slice size decrease to nothing as it got farther from the center.</p>
+<p>Although the concentric shapes are kind of neat, it doesn’t look like a topographical map because the lines are different width, and that is not an easy problem to solve. Instead of continuing on this path, my inspiration took me away from the idea of a topographical map and in an unknown direction, I took a single wider slice and made the slice size decrease to nothing as it got farther from the center.</p>
 <img src="/2022/08/06/perlin-layers/1659511615.png" class="" title="fuzzy">
 
 <p>I also tried doing it with distance from a ring instead.</p>
 <img src="/2022/08/06/perlin-layers/1659512672.png" class="" title="ring">
 
 
-<p>None of these really felt right but I couldn’t tell what it needed. So I asked a friend of mine and he said it was too fuzzy, to this end I adjusted the cutoff to be non linear and sharper.</p>
+<p>None of these really felt right but I couldn’t tell what it needed. So I asked a friend of mine and he said it was too fuzzy, to reduce fuzziness I adjusted the cutoff to be non linear and sharper.</p>
 <h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><p><em>click on the remake button to make another symbol and the other two to change how complicated the symbol is.</em></p>
 <iframe src="static-gen" width="804" height="804" frameborder="0" loading="lazy" allowfullscreen></iframe>
 
-<p>It was still a little fuzzy at times but it was reduced enough, and I thought it looked like a symbol from an alien language, which I liked, so I refined the code and made it easy to make them of any size. Here is a sheet of them.</p>
+<p>It was still a little fuzzy at times but it was reduced enough, and I thought it looked like a symbol from an alien language, which I liked. I refined the code and made it easy to make them of any size, here is a sheet of them.</p>
 <img src="/2022/08/06/perlin-layers/1659776156.png" class="" title="many symbols">
 
 <p>Then I tried reversing it so it was thickest on the edge and barely held together in the center.</p>
 <img src="/2022/08/06/perlin-layers/1659819856.png" class="" title="webbing">
 
-<p>This was my favorite stop on this journey and I had a variant of this as my phone wallpaper for a while.</p>
+<p>This was my favorite stop on the journey and I had a variant of this as my phone wallpaper for a while.</p>
 
       </div>
       
@@ -313,7 +313,7 @@
     
     <div class="footer-more">
       
-        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
         
     </div>
   
