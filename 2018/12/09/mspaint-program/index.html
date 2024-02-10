@@ -205,7 +205,7 @@
 <p>These two are some of the basic geometry. As you can see the lines are not solid, this is because I was controlling the mouse with equations of the shape and just periodically marking the current value at a constant spacing.</p>
 <p>An example of this is most clear in the circles, I am making some number of points for each circle, but as the circle gets bigger, the lines gets more uneven.</p>
 <p>This could be solved with adjusting based on the radius, but it still falls apart in more complicated shapes where within one shape there is no single spacing amount that would always work. For now in the images below I dialed in the spacing manually.</p>
-<h2 id="some-basic-geometry"><a href="#some-basic-geometry" class="headerlink" title="some basic geometry"></a>some basic geometry</h2><img src="/2018/12/09/mspaint-program/slantedPyramid.png" class="" title="slanted pyramid"> 
+<h2 id="Some-basic-geometry"><a href="#Some-basic-geometry" class="headerlink" title="Some basic geometry"></a>Some basic geometry</h2><img src="/2018/12/09/mspaint-program/slantedPyramid.png" class="" title="slanted pyramid"> 
 
 <img src="/2018/12/09/mspaint-program/pseudospiral.png" class="" title="circle attempt">
 
@@ -227,11 +227,11 @@
 
 <p>These were a lot of fun to make, but I wanted to make something more <strong>crazy</strong>. I had heard about fractals, mentioned as some very complicated shape, and thought I would try that. So I found some code from wikipedia on <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Julia_set">Julia sets</a> and gave it a try.</p>
 <p>It was <strong>so</strong> slow, I ended up only doing every tenth pixel and simplifying to black or white but even still the below image took around 30 minutes before I cut it off.</p>
-<h2 id="fractals"><a href="#fractals" class="headerlink" title="fractals"></a>fractals</h2><img src="/2018/12/09/mspaint-program/julia.3061.png" class="" title="the first fractal">
+<h2 id="Fractals"><a href="#Fractals" class="headerlink" title="Fractals"></a>Fractals</h2><img src="/2018/12/09/mspaint-program/julia.3061.png" class="" title="the first fractal">
 
 <p>At the time I thought it was just because fractals were so complicated, but it was actually because I did not know how fractals worked, Knowing what I do now, I could have done the following two modifications to make it run in 2 seconds or less.</p>
-<h2 id="1-stop-checking-for-interrupts"><a href="#1-stop-checking-for-interrupts" class="headerlink" title="1. stop checking for interrupts"></a>1. stop checking for interrupts</h2><p>My programs took control of the mouse and keyboard and things often went very wrong, I broke my computer several times when the mouse clicked many things it should not have. To counteract this I added a hotkey that terminated the program, this was usually fine, but in the fractal code it was checking 1000 times per pixel which was just too much.</p>
-<h2 id="2-lower-infinity"><a href="#2-lower-infinity" class="headerlink" title="2. lower infinity"></a>2. lower infinity</h2><p>I will go into detail in later posts but instead of doing 1000 rounds of calculations per pixel I could have lowered it to about 30 and gotten the same result.</p>
+<h2 id="1-Stop-checking-for-interrupts"><a href="#1-Stop-checking-for-interrupts" class="headerlink" title="1. Stop checking for interrupts"></a>1. Stop checking for interrupts</h2><p>My programs took control of the mouse and keyboard and things often went very wrong, I broke my computer several times when the mouse clicked many things it should not have. To counteract this I added a hotkey that terminated the program, this was usually fine, but in the fractal code it was checking 1000 times per pixel which was just too much.</p>
+<h2 id="2-Lower-infinity"><a href="#2-Lower-infinity" class="headerlink" title="2. Lower infinity"></a>2. Lower infinity</h2><p>I will go into detail in later posts but instead of doing 1000 rounds of calculations per pixel I could have lowered it to about 30 and gotten the same result.</p>
 <p>At the time, I thought it was slow just because I was using paint and thought it would be faster if I switched to making images directly with code instead of wasting time on mouse operations. Although this idea was incorrect, it pushed me to explore and discover the world of generative art.</p>
 
       </div>
@@ -287,7 +287,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#some-basic-geometry"><span class="toc-text">some basic geometry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Horlage"><span class="toc-text">Horlage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roses"><span class="toc-text">Roses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fractals"><span class="toc-text">fractals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-stop-checking-for-interrupts"><span class="toc-text">1. stop checking for interrupts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-lower-infinity"><span class="toc-text">2. lower infinity</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-basic-geometry"><span class="toc-text">Some basic geometry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Horlage"><span class="toc-text">Horlage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roses"><span class="toc-text">Roses</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fractals"><span class="toc-text">Fractals</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Stop-checking-for-interrupts"><span class="toc-text">1. Stop checking for interrupts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Lower-infinity"><span class="toc-text">2. Lower infinity</span></a></li></ol>
       
     </div>
   </div>

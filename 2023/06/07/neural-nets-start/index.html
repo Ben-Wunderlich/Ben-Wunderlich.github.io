@@ -157,7 +157,7 @@
           
           <div class="post-foot-prev">
             
-              <a href="/2023/06/24/delve/" target="_self">
+              <a href="/2023/06/15/flow-filter/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -195,7 +195,7 @@
 
       <div class="markdown-body">
         <p>At the moment, AI(also called Machine Learning or ML) is all the rage, and CS professors know this, so in many courses they insert AI even when it has nothing ot do with the course material. I didn’t really feel like I had a handle on it until I took a specific course on machine learning, it put each ML technique in context and provided the math of how they work.</p>
-<h2 id="graph-search"><a href="#graph-search" class="headerlink" title="graph search"></a>graph search</h2><p>Overall a great takeaway from the start of the course is what ML can be other than neural networks, namely graph searches. When you can represent a problem as a graph you can use the massive body of knowledge on how to deal with graphs to solve problems.</p>
+<h2 id="Graph-search"><a href="#Graph-search" class="headerlink" title="Graph search"></a>Graph search</h2><p>Overall a great takeaway from the start of the course is what ML can be other than neural networks, namely graph searches. When you can represent a problem as a graph you can use the massive body of knowledge on how to deal with graphs to solve problems.</p>
 <p>Many problems that may not seem like graphs can be modeled very well, for example tic tac toe can have each possible state of the game board as a node and two nodes are connected if one can transform into the other by a play move. Alone this takes up a lot of space, but you can make the graph as you go and only make the nodes you need to.</p>
 <h2 id="Logical-agents"><a href="#Logical-agents" class="headerlink" title="Logical agents"></a>Logical agents</h2><p>Another powerful ML technique is using the power of logic, literal logic, in its most pure form. Each program of this type is represented by clauses, for example you could have some clauses</p>
 <ul>
@@ -210,7 +210,7 @@
 <h1 id="Neural-networks"><a href="#Neural-networks" class="headerlink" title="Neural networks"></a>Neural networks</h1><p>Neural nets are in premise very simple, there are a series of nodes that are connected, each passes on values to nodes it is connected to based on some values the node has stored and any values it was fed. At first these internal values are random, but by feeding in data in the first node(s) and changing the values so it is closer to the output you want, you can create shockingly useful programs.</p>
 <h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><p>One use of neural is feeding in an image and label that image in some way, this starts with one input node for each pixel, then more layers that each connect to the previous layer, eventually tapering down to output nodes that correspond to how many classes you want to separate the images into. This type of system can be harnessed in self driving cars, machine vision, cancer detection and so, so much more.</p>
 <p>Classification is amazingly useful, and can also be used to generate something other than a label. This can be done by having an adversarial network, where a generator network creates the information, then classification is used to show how bad the result is, which then pushes the generator further in that direction. Under this technique the generator can get as good as the classifier can judge.</p>
-<h2 id="what-I-did"><a href="#what-I-did" class="headerlink" title="what I did"></a>what I did</h2><p>I liked using Keras in the machine learning course so I downloaded a dataset of famous painters and used Keras to make a convolutional neural network to make a classifier that identifies which artist made a painting.</p>
+<h2 id="What-I-did"><a href="#What-I-did" class="headerlink" title="What I did"></a>What I did</h2><p>I liked using Keras in the machine learning course so I downloaded a dataset of famous painters and used Keras to make a convolutional neural network to make a classifier that identifies which artist made a painting.</p>
 <p>Here is how the model was built</p>
 <figure class="highlight python"><figcaption><span>enemy object</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">model = keras.models.Sequential()</span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">8</span>, (<span class="number">3</span>, <span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">model.add(keras.layers.MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">8</span>, (<span class="number">4</span>, <span class="number">4</span>), activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">model.add(keras.layers.MaxPooling2D((<span class="number">2</span>, <span class="number">2</span>)))</span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">8</span>, (<span class="number">4</span>, <span class="number">4</span>), activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">model.add(keras.layers.Flatten())</span><br><span class="line"></span><br><span class="line">model.add(keras.layers.Dense(<span class="number">15</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -253,7 +253,7 @@
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2023/06/24/delve/" target="_self">
+              <a href="/2023/06/15/flow-filter/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -270,7 +270,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#graph-search"><span class="toc-text">graph search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Logical-agents"><span class="toc-text">Logical agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markov-chain"><span class="toc-text">Markov chain</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Neural-networks"><span class="toc-text">Neural networks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Classification"><span class="toc-text">Classification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-I-did"><span class="toc-text">what I did</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-search"><span class="toc-text">Graph search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Logical-agents"><span class="toc-text">Logical agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Markov-chain"><span class="toc-text">Markov chain</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Neural-networks"><span class="toc-text">Neural networks</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Classification"><span class="toc-text">Classification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-I-did"><span class="toc-text">What I did</span></a></li></ol>
       
     </div>
   </div>

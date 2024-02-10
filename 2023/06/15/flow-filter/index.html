@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      flow-filter 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/06/07/neural-nets-start/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+              <a href="/2023/06/24/delve/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">flow-filter</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2023-06-15
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Python/" title="Python">
+                    #Python
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>I stumbled across a generative art tool, the first prompt I gave it was simply the word sadness, this is what I got.</p>
+<img src="/2023/06/15/flow-filter/inspiration.png" class="" title="original inspiration">
+
+<p>I found this image to be wonderful and wanted to make a filter that could mimic this effect.</p>
+<h1 id="Polygon-filter"><a href="#Polygon-filter" class="headerlink" title="Polygon filter"></a>Polygon filter</h1><p>Because of the cpu requirements for this kind of filter I knew I couldn’t use any of my existing frameworks in python or javascript. I knew C++ was fast enough and would have something I could use, so I looked around and found <a target="_blank" rel="noopener" href="https://openframeworks.cc/">openFrameworks</a> to be just what I was looking for.</p>
+<p>My C++ was a little rusty but the framework is easy to use and I was able to quickly implement my ideas.</p>
+<h2 id="My-ideas"><a href="#My-ideas" class="headerlink" title="My ideas"></a>My ideas</h2><p>To match the original I wanted areas with less contrast to have less polygons, the way I did that was by starting with a single rectangle and using the following recursive method of splitting.</p>
+<ol>
+<li>check the contrast of pixels currently enclosed by the shape.</li>
+<li>if the contrast is too high, split into more shapes and start process again with new sub-shapes.</li>
+</ol>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>I did a bit of parameter tuning and ended up with these results.</p>
+<img src="/2023/06/15/flow-filter/pizza.png" class="" title="pizza attempt">
+<img src="/2023/06/15/flow-filter/gardne-selfie.png" class="" title="selfie attempt">
+
+<p>All my results were okay, but lacked the soul in the original so I moved on to try some other methods.</p>
+<h1 id="Flow-technique"><a href="#Flow-technique" class="headerlink" title="Flow technique"></a>Flow technique</h1><p>I still wanted to create a filter, so I tried treating an image as the base of a flow system. Using this method each pixel has a direction that is determined by the brightness of the pixel, then flows start periodically and trace their path Following the angle at that pixel. You can learn about flow fields in more depth on my flow post.</p>
+<h2 id="Refining-flow-filtering"><a href="#Refining-flow-filtering" class="headerlink" title="Refining flow filtering"></a>Refining flow filtering</h2><p>First I just had the angle be brightness value, which gave this.</p>
+<img src="/2023/06/15/flow-filter/59152859.png" class="" title="failed attempt">
+
+<p>As you can see, it looks like nothing, there is too much noise and there is no order to the pixel brightness.</p>
+<h3 id="Gradient-ascent"><a href="#Gradient-ascent" class="headerlink" title="Gradient ascent"></a>Gradient ascent</h3><p>Because the angles were random, I made it so that instead of following the angles, it would look at its neighbors and move towards the brightest spot. This technique is useful in many applications and is called gradient ascent.</p>
+<img src="/2023/06/15/flow-filter/62110386.png" class="" title="searching light">
+
+
+<h3 id="Gradient-descent"><a href="#Gradient-descent" class="headerlink" title="Gradient descent"></a>Gradient descent</h3><p>Next I tried making it chase the darkness instead of the light.</p>
+<img src="/2023/06/15/flow-filter/61595687.png" class="" title="searching darkness">
+
+
+<h3 id="Adding-depth"><a href="#Adding-depth" class="headerlink" title="Adding depth"></a>Adding depth</h3><p>The last two attempts were neat, but lacked something because they were just two colors, so I started making the color of the flow depend on the pixel that it ended on. First I had it in grayscale</p>
+<img src="/2023/06/15/flow-filter/79731429.png" class="" title="grayscale version">
+
+<p>Then in color.</p>
+<img src="/2023/06/15/flow-filter/72916856.png" class="" title="color version">
+
+<p>Lastly I wanted more chaos so I added circular motion that dragged each flow loosely in a circle while they tried to find the light.</p>
+<img src="/2023/06/15/flow-filter/93021704.png" class="" title="color whirl">
+
+<p>Because I like this method, here is it with a flower.</p>
+<img src="/2023/06/15/flow-filter/flowy.png" class="" title="color whirl flower">
+
+<p>And for this one I added way more flows and removed the circular force. Using using many flows made the program take a while to run, but I think it was worth it.</p>
+<img src="/2023/06/15/flow-filter/blur-flow.png" class="" title="complex flower">
+
+
+<h1 id="Fully-circular"><a href="#Fully-circular" class="headerlink" title="Fully circular"></a>Fully circular</h1><p>A year or so later I stumbled across this <a target="_blank" rel="noopener" href="https://www.reddit.com/r/PlotterArt/comments/13u7xj4/male_sculpture/">image</a> on reddit and was reminded of my circular attempt. I decided to continue in a more radical direction inspired by that image, I wanted an image created by concentric circle segments.</p>
+<h2 id="Basic-technique"><a href="#Basic-technique" class="headerlink" title="Basic technique"></a>Basic technique</h2><p>For this technique I moved out in circles, each time checking the pixels that would be covered by a test arc and filling in an amount of that arc depending on the darkness of the test arc.</p>
+<img src="/2023/06/15/flow-filter/simple-portrait.png" class="" title="basic portrait">
+
+<h2 id="Adding-complexity"><a href="#Adding-complexity" class="headerlink" title="Adding complexity"></a>Adding complexity</h2><p>The basic version was fine but not that interesting, so I tried adding colors from the image and adding more fine detail with smaller arcs and more concentric circles.</p>
+<img src="/2023/06/15/flow-filter/ducky.png" class="" title="ducky">
+
+<p>In the end I was fine with these results, but I think I prefer the later flow filter technique.</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/06/07/neural-nets-start/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2023-06-15
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Python/" title="Python">
+                        #Python
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2023/06/24/delve/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Polygon-filter"><span class="toc-text">Polygon filter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#My-ideas"><span class="toc-text">My ideas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-text">Results</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flow-technique"><span class="toc-text">Flow technique</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Refining-flow-filtering"><span class="toc-text">Refining flow filtering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-ascent"><span class="toc-text">Gradient ascent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-descent"><span class="toc-text">Gradient descent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-depth"><span class="toc-text">Adding depth</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fully-circular"><span class="toc-text">Fully circular</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-technique"><span class="toc-text">Basic technique</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-complexity"><span class="toc-text">Adding complexity</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + flow-filter + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2023%2F06%2F15%2Fflow-filter%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2023/06/15/flow-filter/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

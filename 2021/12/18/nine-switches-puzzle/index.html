@@ -201,9 +201,9 @@
 
       <div class="markdown-body">
         <p>In many games I have encountered this one particular puzzle.</p>
-<h2 id="diablo"><a href="#diablo" class="headerlink" title="diablo"></a>diablo</h2><img src="/2021/12/18/nine-switches-puzzle/diablo.jpg" class="" title="puzzle in diablo">
+<h2 id="Diablo"><a href="#Diablo" class="headerlink" title="Diablo"></a>Diablo</h2><img src="/2021/12/18/nine-switches-puzzle/diablo.jpg" class="" title="puzzle in diablo">
 
-<h2 id="path-of-exile"><a href="#path-of-exile" class="headerlink" title="path of exile"></a>path of exile</h2><img src="/2021/12/18/nine-switches-puzzle/poe.jpg" class="" title="puzzle in poe">
+<h2 id="Path-of-Exile"><a href="#Path-of-Exile" class="headerlink" title="Path of Exile"></a>Path of Exile</h2><img src="/2021/12/18/nine-switches-puzzle/poe.jpg" class="" title="puzzle in poe">
 
 <p>I think that it has showed up in these and many other games because it</p>
 <ul>
@@ -211,10 +211,10 @@
 <li>is relatively easy to solve even if you just click randomly</li>
 <li>can be adapted into any world(torches, switches, crystals, etc).</li>
 </ul>
-<h2 id="your-turn-to-try-it"><a href="#your-turn-to-try-it" class="headerlink" title="your turn to try it"></a>your turn to try it</h2><p>In case you are unfamiliar with the puzzle, here is a quick web version I whipped up. Feel free to experiment and try to solve the puzzle by lighting up all the buttons.</p>
+<h2 id="Your-turn-to-try-it"><a href="#Your-turn-to-try-it" class="headerlink" title="Your turn to try it"></a>Your turn to try it</h2><p>In case you are unfamiliar with the puzzle, here is a quick web version I whipped up. Feel free to experiment and try to solve the puzzle by lighting up all the buttons.</p>
 <iframe src="puzzle" width="400" height="400" frameborder="0" loading="lazy" allowfullscreen></iframe>
 
-<h2 id="my-version"><a href="#my-version" class="headerlink" title="my version"></a>my version</h2><p>In order to have an implementation I could practice with, I made an android app with Android Studio and Kotlin. To assist in testing the puzzle I included</p>
+<h2 id="My-version"><a href="#My-version" class="headerlink" title="My version"></a>My version</h2><p>In order to have an implementation I could practice with, I made an android app with Android Studio and Kotlin. To assist in testing the puzzle I included</p>
 <ul>
 <li>a switch to toggle whether switches also changed on diagonals</li>
 <li>a counter to track how many switches it took to complete</li>
@@ -222,7 +222,7 @@
 </ul>
 <img src="/2021/12/18/nine-switches-puzzle/mine.png" class="" title="puzzle in my app">
 
-<h2 id="solving-it"><a href="#solving-it" class="headerlink" title="solving it"></a>solving it</h2><p>Over the next month or so I tried solving the puzzle while on the bus using every technique I could think of, at first randomly, until I found a method. </p>
+<h2 id="Solving-it"><a href="#Solving-it" class="headerlink" title="Solving it"></a>Solving it</h2><p>Over the next month or so I tried solving the puzzle while on the bus using every technique I could think of, at first randomly, until I found a method. </p>
 <p>All I had to do for my method was look at a switch layout, press every switch that was currently unlit, then look at how it was arranged and do it again. This works both with and without diagonals. The order of pushing the buttons doesn’t matter, and it works from any arbitrary state of the puzzle. However it is not always fast, especially for some randomized puzzles.</p>
 <p>A few months after this I was in a course in machine learning and we used search algorithms to solve puzzles, using each possible state of the puzzle as a node, and two nodes are connected if they can be reached by a single move. I converted the nine switches puzzle to a graph and confirmed that the optimal solution from the initial state is 8 moves.</p>
 <p>This is great but from an arbitrary state I still don’t know how to solve in an optimal way. I could find it using the graph search algorithms, but doing that didn’t give me an algorithm a human could use.</p>
@@ -287,7 +287,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#diablo"><span class="toc-text">diablo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#path-of-exile"><span class="toc-text">path of exile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#your-turn-to-try-it"><span class="toc-text">your turn to try it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#my-version"><span class="toc-text">my version</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#solving-it"><span class="toc-text">solving it</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Diablo"><span class="toc-text">Diablo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Path-of-Exile"><span class="toc-text">Path of Exile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Your-turn-to-try-it"><span class="toc-text">Your turn to try it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#My-version"><span class="toc-text">My version</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solving-it"><span class="toc-text">Solving it</span></a></li></ol>
       
     </div>
   </div>
