@@ -11,7 +11,7 @@
   
   <title>
     
-      square-splitting 
+      flow-fields 
       
       
       |
@@ -148,7 +148,7 @@
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2022/08/06/perlin-layers/" target="_self">
+              <a href="/2022/09/09/square-splitting/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -157,7 +157,7 @@
           
           <div class="post-foot-prev">
             
-              <a href="/2022/09/11/flow-fields/" target="_self">
+              <a href="/2022/11/25/reflections/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -167,11 +167,11 @@
       
 
 
-      <div class="post-title">square-splitting</div>
+      <div class="post-title">flow-fields</div>
       <div class="post-attach">
         <span class="post-pubtime">
           
-          2022-09-09
+          2022-09-11
         </span>
         
               <span class="post-tags">
@@ -194,29 +194,41 @@
       </div>
 
       <div class="markdown-body">
-        <p>I was looking at raytracing and 3d rendering when I had the thought of making a program to split squares when you touched them, and p5js seemed like a good fit for it. The algorithm is very simple, each square is stored as top left and bottom right corner, once a touch happens, just go through each pair of coordinates and check if it is within the bounds. To do the split is also simple, just compute the center of the square, remove the original and add 4 more smaller squares.</p>
-<h2 id="Basic-testing"><a href="#Basic-testing" class="headerlink" title="Basic testing"></a>Basic testing</h2><img src="/2022/09/09/square-splitting/1662775826.png" class="" title="basic">
+        <p>Flow fields are a common element in generative art that I hadn’t explored yet because I had seen so many other people explore this topic.</p>
+<h1 id="How-flow-fields-work"><a href="#How-flow-fields-work" class="headerlink" title="How flow fields work"></a>How flow fields work</h1><h2 id="Fields"><a href="#Fields" class="headerlink" title="Fields"></a>Fields</h2><p>The field in ‘flow field’ refers to a field of angles that each point in some direction.</p>
+<img src="/2022/09/11/flow-fields/vector-demo.jpg" class="" title="field example">
 
-<p>Things got a little more interesting when I added some color effects, I also changed it so instead of manually touching each square to trigger splitting I did it programmatically which let me create more complex and precise patterns</p>
-<h2 id="Spiral"><a href="#Spiral" class="headerlink" title="Spiral"></a>Spiral</h2><img src="/2022/09/09/square-splitting/1662790893.png" class="" title="spiral">
-
-
-<h2 id="Perlin-noise"><a href="#Perlin-noise" class="headerlink" title="Perlin noise"></a>Perlin noise</h2><img src="/2022/09/09/square-splitting/1662799055.png" class="" title="rounded rose">
-
-<h2 id="Some-text"><a href="#Some-text" class="headerlink" title="Some text"></a>Some text</h2><img src="/2022/09/09/square-splitting/1662874930.png" class="" title="hi spelled out">
-
-<h2 id="Something-else"><a href="#Something-else" class="headerlink" title="Something else"></a>Something else</h2><img src="/2022/09/09/square-splitting/1662797178.png" class="" title="rounded rose">
+<h2 id="Flows"><a href="#Flows" class="headerlink" title="Flows"></a>Flows</h2><p>Once the field is complete, you can start somewhere on the field and move in the direction the field points, do this repeatedly and you can trace out the path of that flow.</p>
+<img src="/2022/09/11/flow-fields/1701643267.jpg" class="" title="field example">
 
 
-<h2 id="Try-it-yourself"><a href="#Try-it-yourself" class="headerlink" title="Try it yourself"></a>Try it yourself</h2><p><em>click the grey square</em></p>
-<iframe src="demo" width="804" height="804" frameborder="0" loading="lazy" allowfullscreen></iframe>
+<h1 id="Making-fields-interesting"><a href="#Making-fields-interesting" class="headerlink" title="Making fields interesting"></a>Making fields interesting</h1><p>How the field angles are set is one of the main variables that can change the overall look of the image. In the demo images above I used perlin noise, commonly used for flow fields.</p>
+<p>Here I made it so each point on the field checks the distance to 6 points and uses the smallest distance as the angle.</p>
+<img src="/2022/09/11/flow-fields/field-example.png" class="" title="field example">
+
+<p>And here I set the angle to be sin of its x position + y position.</p>
+<img src="/2022/09/11/flow-fields/stranger.png" class="" title="more uncommon example">
+
+<h1 id="Changing-flow-rendering"><a href="#Changing-flow-rendering" class="headerlink" title="Changing flow rendering"></a>Changing flow rendering</h1><p>Along with the field angles you can also adjust how each flow traces its path. For the last few I made the line segments smaller so it looks round and had the flows start dark then get lighter as they went.</p>
+<p>For this one I started each flow with black but had it morph with each jump, then average it with a specific color. For its field I used sin waves combined with circular motion as the angle at each point.</p>
+<img src="/2022/09/11/flow-fields/change-flow.jpg" class="" title="color example">
+
+
+<p>The next image is similar to the last, just using a different color. It uses the best function(xsinx) with distance to center, combined with circular motion.</p>
+<img src="/2022/09/11/flow-fields/tentacles.jpg" class="" title="xsinx example">
+
+<h1 id="Further-experimentation"><a href="#Further-experimentation" class="headerlink" title="Further experimentation"></a>Further experimentation</h1><p>I kept making more and more complicated methods of field generation and flow rendering, here are a few of the places I ended up through this exploration.</p>
+<img src="/2022/09/11/flow-fields/squaring.jpg" class="" title="squared with little sine">
+
+<img src="/2022/09/11/flow-fields/exponention.jpg" class="" title="exponentiation tamed by linear factors">
+<img src="/2022/09/11/flow-fields/unusual-rainbow.jpg" class="" title="whatever happened here">
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2022/08/06/perlin-layers/" target="_self">
+              <a href="/2022/09/09/square-splitting/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -224,7 +236,7 @@
           </div>
           <div class="post-attach">
             <span class="post-pubtime">
-              2022-09-09
+              2022-09-11
             </span>
             
                   <span class="post-tags">
@@ -247,7 +259,7 @@
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2022/09/11/flow-fields/" target="_self">
+              <a href="/2022/11/25/reflections/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -264,7 +276,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-testing"><span class="toc-text">Basic testing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spiral"><span class="toc-text">Spiral</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Perlin-noise"><span class="toc-text">Perlin noise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-text"><span class="toc-text">Some text</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Something-else"><span class="toc-text">Something else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-it-yourself"><span class="toc-text">Try it yourself</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#How-flow-fields-work"><span class="toc-text">How flow fields work</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Fields"><span class="toc-text">Fields</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flows"><span class="toc-text">Flows</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Making-fields-interesting"><span class="toc-text">Making fields interesting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Changing-flow-rendering"><span class="toc-text">Changing flow rendering</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Further-experimentation"><span class="toc-text">Further experimentation</span></a></li></ol>
       
     </div>
   </div>
@@ -360,12 +372,12 @@
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + square-splitting + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2022%2F09%2F09%2Fsquare-splitting%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + flow-fields + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2022%2F09%2F11%2Fflow-fields%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2022/09/09/square-splitting/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2022/09/11/flow-fields/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         
