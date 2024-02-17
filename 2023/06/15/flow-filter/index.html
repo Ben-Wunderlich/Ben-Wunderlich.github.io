@@ -178,6 +178,12 @@
                 <i class="iconfont icon-tags mr-10" title="Tags"></i>
                 
                 <span class="span--tag mr-8">
+                  <a href="/tags/Art/" title="Art">
+                    #Art
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
                   <a href="/tags/C/" title="C++">
                     #C++
                   </a>
@@ -191,8 +197,8 @@
         <p>I stumbled across a generative art tool, the first prompt I gave it was simply the word ‘sadness’, this is what I got.</p>
 <img src="/2023/06/15/flow-filter/inspiration.png" class="" title="original inspiration">
 
-<p>I found this image to be wonderful and wanted to make a filter that could mimic this effect.</p>
-<h1 id="Polygon-filter"><a href="#Polygon-filter" class="headerlink" title="Polygon filter"></a>Polygon filter</h1><p>Because of the cpu requirements for this kind of filter I knew I couldn’t use any of my existing frameworks in python or javascript. I knew C++ was fast enough and would have something I could use, so I looked around and found <a target="_blank" rel="noopener" href="https://openframeworks.cc/">openFrameworks</a> to be just what I was looking for. My C++ was a little rusty but the framework is easy to use and I was able to quickly implement my ideas.</p>
+<p>I found this image to be wonderful and wanted to make a filter that could mimic the style of the image.</p>
+<h1 id="Polygon-filter"><a href="#Polygon-filter" class="headerlink" title="Polygon filter"></a>Polygon filter</h1><p>Because of the cpu requirements for this kind of filter I knew I couldn’t use any of my existing frameworks in python or javascript. I knew C++ was fast enough and would probably have something I could use, so I looked around and found <a target="_blank" rel="noopener" href="https://openframeworks.cc/">openFrameworks</a> to be just what I was looking for. My C++ was a little rusty but the framework was easy to use and I was able to quickly implement my ideas.</p>
 <h2 id="My-ideas"><a href="#My-ideas" class="headerlink" title="My ideas"></a>My ideas</h2><p>To match the original I wanted areas with less contrast to have less polygons, the way I did that was by starting with a single rectangle and using the following recursive method of splitting.</p>
 <ol>
 <li>check the contrast of pixels currently enclosed by the shape.</li>
@@ -203,12 +209,12 @@
 <img src="/2023/06/15/flow-filter/gardne-selfie.png" class="" title="selfie attempt">
 
 <p>All my results were okay, but lacked the soul in the original so I moved on to try other methods.</p>
-<h1 id="Flow-technique"><a href="#Flow-technique" class="headerlink" title="Flow technique"></a>Flow technique</h1><p>I tried treating an image as the base of a flow system, using this method each pixel has a direction that is determined by the brightness of the pixel, then flows start periodically and trace their path following the angle at that pixel. You can learn about flow fields in more depth on my flow fields post.</p>
-<h2 id="Refining-flow-filtering"><a href="#Refining-flow-filtering" class="headerlink" title="Refining flow filtering"></a>Refining flow filtering</h2><p>First I just had the angle be brightness value, which gave this.</p>
+<h1 id="Flow-technique"><a href="#Flow-technique" class="headerlink" title="Flow technique"></a>Flow technique</h1><p>I tried treating an image as the base of a flow system, using this method each pixel has a direction that is determined by the brightness of the pixel. Flows start periodically and trace their path following the angle at that pixel. You can learn about flow fields in more depth on my flow fields post.</p>
+<h2 id="Flow-failure"><a href="#Flow-failure" class="headerlink" title="Flow failure"></a>Flow failure</h2><p>First I just had the angle be brightness value, which gave this.</p>
 <img src="/2023/06/15/flow-filter/59152859.png" class="" title="failed attempt">
 
-<p>As you can see, it looks like nothing. There is too much noise and there is no order to the pixel brightness.</p>
-<h3 id="Gradient-ascent"><a href="#Gradient-ascent" class="headerlink" title="Gradient ascent"></a>Gradient ascent</h3><p>To try and improve the results I changed it so instead of following flow field it would look at its neighbors and move towards the brightest spot. This technique is useful in many applications and is called gradient ascent.</p>
+<p>As you can see, it looks like nothing. There is too much noise, and more importantly there was no order to the pixel brightness, so no pattern will emerge. I can imagine for some specifically chosen images there could be a way to make it interesting, but for natural images it did not work for me.</p>
+<h3 id="Gradient-ascent"><a href="#Gradient-ascent" class="headerlink" title="Gradient ascent"></a>Gradient ascent</h3><p>To try and improve the results I changed it so instead of following a flow field it would look at its neighbors and move towards the brightest spot. This technique is useful in many applications and is called gradient ascent.</p>
 <img src="/2023/06/15/flow-filter/62110386.png" class="" title="searching light">
 
 
@@ -218,7 +224,8 @@
 <p>Here is a snippet to give you an idea how the program looked.</p>
 <figure class="highlight c++"><figcaption><span>flow main method</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ofApp::flow_curves</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (seeks_light) &#123;</span><br><span class="line">		<span class="built_in">ofSetColor</span>(<span class="number">255</span>);</span><br><span class="line">		<span class="built_in">ofBackground</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">ofSetColor</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="built_in">ofBackground</span>(<span class="number">255</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> border = scan_dist + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> x = border; x &lt; <span class="built_in">ofGetWidth</span>() - border; x += generate_interval) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> y = border; y &lt; <span class="built_in">ofGetHeight</span>() - border; y += generate_interval) &#123;</span><br><span class="line">			<span class="keyword">if</span> (curvy) &#123;</span><br><span class="line">				<span class="built_in">flow_dark_curve</span>(<span class="built_in">ofVec2f</span>(x, y), max_jumps);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="built_in">flow_dark_line</span>(<span class="built_in">ofVec2f</span>(x, y), max_jumps);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Adding-depth"><a href="#Adding-depth" class="headerlink" title="Adding depth"></a>Adding depth</h3><p>The last two attempts were neat, but lacked something because they were just two colors. I started making the color of the flow depend on the pixel that it ended on, first I had it in grayscale</p>
+<h3 id="Adding-depth"><a href="#Adding-depth" class="headerlink" title="Adding depth"></a>Adding depth</h3><p>The last two attempts were neat, but lacked something because they were just two colors. I started making the color of the flow depend on the pixel that it ended on. </p>
+<p>First I had it in grayscale</p>
 <img src="/2023/06/15/flow-filter/79731429.png" class="" title="grayscale version">
 
 <p>Then in color.</p>
@@ -263,6 +270,12 @@
                     <i class="iconfont icon-tags mr-10" title="Tags"></i>
                     
                     <span class="span--tag mr-8">
+                      <a href="/tags/Art/" title="Art">
+                        #Art
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
                       <a href="/tags/C/" title="C++">
                         #C++
                       </a>
@@ -290,7 +303,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Polygon-filter"><span class="toc-text">Polygon filter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#My-ideas"><span class="toc-text">My ideas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-text">Results</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flow-technique"><span class="toc-text">Flow technique</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Refining-flow-filtering"><span class="toc-text">Refining flow filtering</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-ascent"><span class="toc-text">Gradient ascent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-descent"><span class="toc-text">Gradient descent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-depth"><span class="toc-text">Adding depth</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Concentric-circles"><span class="toc-text">Concentric circles</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-technique"><span class="toc-text">Basic technique</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-complexity"><span class="toc-text">Adding complexity</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Polygon-filter"><span class="toc-text">Polygon filter</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#My-ideas"><span class="toc-text">My ideas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Results"><span class="toc-text">Results</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Flow-technique"><span class="toc-text">Flow technique</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flow-failure"><span class="toc-text">Flow failure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-ascent"><span class="toc-text">Gradient ascent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradient-descent"><span class="toc-text">Gradient descent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adding-depth"><span class="toc-text">Adding depth</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Concentric-circles"><span class="toc-text">Concentric circles</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-technique"><span class="toc-text">Basic technique</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Adding-complexity"><span class="toc-text">Adding complexity</span></a></li></ol></li></ol>
       
     </div>
   </div>
