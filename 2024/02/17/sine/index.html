@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="author" content="Ben Wunderlich" />
+  <meta name="description" content="" />
+  
+  
+  <title>
+    
+      sine++ 
+      
+      
+      |
+    
+     Ben Wunderlich Blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Ben Wunderlich Blog</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/08/03/hexo-blog/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+
+
+      <div class="post-title">sine++</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          
+          2024-02-17
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Python/" title="Python">
+                    #Python
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Esolang/" title="Esolang">
+                    #Esolang
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+
+      <div class="markdown-body">
+        <p>After making Delve I decided to make an esolang that was less user friendly and more arcane. I considered a few ideas before settling on a language consisting entirely of combinations of sine waves. Each wave would have effects based on their frequency, amplitude and a combination of every other wave. Part of the reason for having each waves effects rely on every other wave was to make it difficult to use.</p>
+<h1 id="Specification"><a href="#Specification" class="headerlink" title="Specification"></a>Specification</h1><p>The core of the program is the <em>progress</em>, a number that represents the execution through the program, and the <em>wave value</em> which is created by summing up the values taken by each wave. Each wave is calculated as follows: amplitude * sin(start+TAU&#x2F;frequency). There is also an <em>increment</em> value that sets how much the progress is changed after each execution cycle. </p>
+<p>All waves contribute to the wave value and can also have side effects depending on there frequency, for each factor in the waves frequency it has an additional effect. Each wave has a start value and optional end value, both triggered by the progress. Each line of the program is 3 or 4 numbers separated by commas, and anything not following that pattern is treated as a comment.</p>
+<figure class="highlight python"><figcaption><span>special frequencies</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wave_dict = &#123;</span><br><span class="line">    <span class="number">2</span> : print_wave,</span><br><span class="line">    <span class="number">3</span>: ascii_wave,</span><br><span class="line">    <span class="number">5</span>: print_progress_wave,</span><br><span class="line">    <span class="number">7</span> : nullify_wave,</span><br><span class="line">    <span class="number">11</span>: jump_wave,</span><br><span class="line">    <span class="number">13</span>: increment_wave,</span><br><span class="line">    <span class="number">17</span>: mimic_wave,</span><br><span class="line">    <span class="number">2081</span>: death_wave</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Because a frequency can have multiple factors, each wave can have multiple side effects which all use the same amplitude.</p>
+<h2 id="Factor-side-effects"><a href="#Factor-side-effects" class="headerlink" title="Factor side effects"></a>Factor side effects</h2><h3 id="Print-wave"><a href="#Print-wave" class="headerlink" title="Print wave"></a>Print wave</h3><pre><code>Prints wave value * amplitude.
+</code></pre>
+<h3 id="Ascii-wave"><a href="#Ascii-wave" class="headerlink" title="Ascii wave"></a>Ascii wave</h3><pre><code>Prints the ascii value of the wave value * amplitude if it is a valid ascii code.
+</code></pre>
+<h3 id="Print-progress-wave"><a href="#Print-progress-wave" class="headerlink" title="Print progress wave"></a>Print progress wave</h3><pre><code>Prints the progress * amplitude.
+</code></pre>
+<h3 id="Nullify-wave"><a href="#Nullify-wave" class="headerlink" title="Nullify wave"></a>Nullify wave</h3><pre><code>If amplitude &gt; wave value when activates, no side effects will occur till this wave ends.
+</code></pre>
+<h3 id="Jump-wave"><a href="#Jump-wave" class="headerlink" title="Jump wave"></a>Jump wave</h3><pre><code>Sets progress to wave value * amplitude and removes any waves that shouldn&#39;t exist with new progress.
+</code></pre>
+<h3 id="Increment-wave"><a href="#Increment-wave" class="headerlink" title="Increment wave"></a>Increment wave</h3><pre><code>Sets the increment to wave value * amplitude.
+</code></pre>
+<h3 id="Mimic-wave"><a href="#Mimic-wave" class="headerlink" title="Mimic wave"></a>Mimic wave</h3><pre><code>The amplitude of this wave changes to wave value * amplitude
+</code></pre>
+<h3 id="Death-wave"><a href="#Death-wave" class="headerlink" title="Death wave"></a>Death wave</h3><pre><code>Ends the program if wave value &gt; amplitude.
+</code></pre>
+<p>You may notice that amplitude is often multiplied by something where it does not make logical sense. This is to make it harder to use, because adding a new wave will generally mess up your current program. For example adding a print wave to see what values are being hit, it must either be useful or change the wave value, since if the amplitude is zero it will always just print zero.</p>
+<p>Here is an example program that prints hello, world</p>
+<figure class="highlight plaintext"><figcaption><span>russian roulette program</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">17, 5, 0, 1</span><br><span class="line">5, 1, 1, 76</span><br><span class="line"></span><br><span class="line">1, 103.99, 1.57, 5.1</span><br><span class="line">1, 100.99, 7.85, 11</span><br><span class="line">1, 107.99, 14.13, 16</span><br><span class="line">1, 107.99, 20.41, 26</span><br><span class="line">1, 110.99, 26.69, 31</span><br><span class="line">1, 43.99, 32.97, 36</span><br><span class="line">1, 31.99, 39.25, 41</span><br><span class="line">1, 118.99, 45.53, 51</span><br><span class="line">1, 110.99, 51.81, 56</span><br><span class="line">1, 113.99, 58.09, 61</span><br><span class="line">1, 107.99, 64.37, 66</span><br><span class="line">1, 99.99, 70.65, 76</span><br><span class="line"></span><br><span class="line">2081, -100, 80, 200</span><br></pre></td></tr></table></figure>
+<p>The first block sets the increment to be 5 and starts an ascii wave, the second block sets ascii values, where each start has to be equal to some multiple of tau + pi&#x2F;2, and the third block ends the program.</p>
+<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><p>Similar to Delve I prototyped the language in Python, although the implementation was fairly straight forward due to the explicit mathematical nature of the specification. I chose to represent each type of wave as a function instead of a class and each wave has a list of each frequency that are executed each time side effects are triggered.</p>
+<figure class="highlight python"><figcaption><span>program loop</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">run_program</span>():</span><br><span class="line">    <span class="comment"># initial side effects at progress = 0</span></span><br><span class="line">    do_wave_side_effects()</span><br><span class="line">    <span class="comment"># advance_waves will return false if program should stop</span></span><br><span class="line">    <span class="keyword">while</span>(advance_waves()):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nullify:</span><br><span class="line">            do_wave_side_effects()</span><br></pre></td></tr></table></figure>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/08/03/hexo-blog/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              2024-02-17
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Python/" title="Python">
+                        #Python
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Esolang/" title="Esolang">
+                        #Esolang
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Specification"><span class="toc-text">Specification</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Factor-side-effects"><span class="toc-text">Factor side effects</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Print-wave"><span class="toc-text">Print wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ascii-wave"><span class="toc-text">Ascii wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Print-progress-wave"><span class="toc-text">Print progress wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nullify-wave"><span class="toc-text">Nullify wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jump-wave"><span class="toc-text">Jump wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Increment-wave"><span class="toc-text">Increment wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mimic-wave"><span class="toc-text">Mimic wave</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Death-wave"><span class="toc-text">Death wave</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Implementation"><span class="toc-text">Implementation</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2024 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + sine%2B%2B + '&url=' + http%3A%2F%2Fben-wunderlich.github.io%2F2024%2F02%2F17%2Fsine%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://ben-wunderlich.github.io/2024/02/17/sine/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
